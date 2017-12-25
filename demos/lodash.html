@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../node_modules/lodash/lodash.js"></script>
+  <script>
+    // _ underscore
+    var fn = _.debounce(function () {
+      console.log('hello lodash')
+    }, 1000)
+
+    for (var i = 0; i < 100; i++) {
+      fn()
+    }
+
+    // 函数防抖原理
+    function debounce(callback, time) {
+      // 闭包运用
+      let timer
+      return function () {
+        // 每次调用都把上一次的定时器清除
+        window.clearTimeout(timer)
+
+        // 然后再生成新的定时器
+        timer = window.setTimeout(function () {
+          callback()
+        }, time)
+      }
+    }
+
+
+
+
+  </script>
+</body>
+</html>

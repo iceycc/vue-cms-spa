@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 
+      父组件订阅子组件内部发布的 current-change 自定义事件
+      你见的东西多了，你就不怕了，技术都想想通的
+     -->
+    <itcast-pagination
+      @current-change="handleCurrentChange"
+      :current-page="1"
+      :page-size="pageSize"
+      :total="total">
+    </itcast-pagination>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script src="itcast-pagination.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        total: 50,
+        pageSize: 3
+      },
+      methods: {
+        handleCurrentChange (page) {
+          // 拿到 page 页码发请求列表数据
+          console.log(page)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
